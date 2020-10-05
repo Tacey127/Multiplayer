@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 
 public class ClientHandle : MonoBehaviour
@@ -14,5 +15,16 @@ public class ClientHandle : MonoBehaviour
 
         //send welcome recieved packet
         ClientSend.WelcomeRecieved();
+
+        Client.instance.udp.Connect(((IPEndPoint)Client.instance.tcp.socket.Client.LocalEndPoint).Port);
     }
+
+    public static void UDPTest(Packet _packet)
+    {
+        string _msg = _packet.ReadString();
+
+        Debug.Log($"Recieved packet via UDP. Contains message: {_msg}");
+        ClientSend.UDPTestRecieved();
+    }
+
 }

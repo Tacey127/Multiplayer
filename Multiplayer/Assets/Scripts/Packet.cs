@@ -4,17 +4,19 @@ using UnityEngine;
 using System.Text;
 
 
-    /// <summary>Sent from server to client.</summary>
-    public enum ServerPackets
-    {
-        welcome = 1
-    }
+/// <summary>Sent from server to client.</summary>
+public enum ServerPackets
+{
+    welcome = 1,
+    udpTest
+}
 
-    /// <summary>Sent from client to server.</summary>
-    public enum ClientPackets
-    {
-        welcomeReceived = 1
-    }
+/// <summary>Sent from client to server.</summary>
+public enum ClientPackets
+{
+    welcomeReceived = 1,
+    udpTestRecieved
+}
 
 public class Packet : IDisposable
 {
